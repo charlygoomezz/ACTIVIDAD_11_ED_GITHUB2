@@ -49,4 +49,47 @@ public class Equipo {
 		}
 		return contador;
 	}
+	
+	public boolean returnIfPlayable() {
+		return (this.listaJugadores.length >= 7) ? true : false;
+	}
+
+	// -> Los objetos tendrán la opción de devolver si una lista de jugadores pasada
+	// por parámetro es exactamente igual a su lista de jugadores
+
+	public boolean returnIfSamePlayers(String[] playerList) {
+
+		boolean result = false;
+
+		if (playerList.length == this.listaJugadores.length) {
+			for (int i = 0; i < playerList.length; i++) {
+				if (!(playerList[i].equals(this.listaJugadores[i]))) {
+					result = false;
+					break;
+				} else {
+					result = true;
+				}
+			}
+		}
+
+		return result;
+	}
+
+	// -> Los objetos tendrán la opción de devolver si un equipo pasado por
+	// parámetro
+	// es exactamente igual al mismo. Un equipo es exactamente igual si tiene el
+	// mismo nombre y la misma lista de jugadores con los mismos nombres.
+
+	public boolean returnIfSameTeam(Equipo equipo) {
+
+		boolean result = false;
+
+		if (equipo.nombre.equals(this.nombre) && this.returnIfSamePlayers(equipo.listaJugadores)) {
+			result = true;
+		}
+
+		return result;
+
+	}
+	
 }
